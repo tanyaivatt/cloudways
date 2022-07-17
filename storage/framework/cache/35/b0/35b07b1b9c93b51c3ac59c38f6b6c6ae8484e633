@@ -1,0 +1,518 @@
+1658087672a:1:{s:11:"product.htm";a:11:{s:8:"fileName";s:11:"product.htm";s:7:"content";s:7763:"title = "Product"
+url = "/product/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "TanyaIvat\Products\Models\Products"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Немає такої послуги"
+
+[builderList]
+modelClass = "TanyaIvat\Products\Models\Products"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "slug"
+noRecordsMessage = "Немає таких послуг"
+detailsPage = "product"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+==
+<?php
+use TanyaIvat\Products\Models\Products;
+use TanyaIvat\Products\Models\Order;
+
+use Falsh;
+use Validator;
+
+function onStart() {
+    $this['services'] = Products::all();
+}
+
+function onSendService() {
+    try {
+        $date = post();
+        $order = new Order;
+        
+        $order->name = $date['name'];
+        $order->email = $date['email'];
+        $order->service = $date['service'];
+        $order->date = $date['date'];
+        $order->time = $date['time'];
+        $order->master = $date['master'];
+        $order->save();
+
+        
+        Flash::success('Успішно надіслано!');
+        
+        
+    }
+    catch (Exception $e){
+        Flash::error('Помилка надсилання');
+    }
+}
+
+function onGetService() {
+    $this['service'] = Products::where('slug', post('service'))->first();
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+{%put styles%}
+
+<style>
+
+    div.slider{
+        margin: 0;
+        border: var(--border);
+        border-radius: .5rem;
+        width: 45rem;
+    }
+
+    .slick-slide {
+      margin: 0px 10px;
+    }
+
+    .slick-slide img {
+      width: 80%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+    }
+
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+</style>
+
+{%endput%}
+
+
+<section class="details-container" id="home">
+
+    <div class="content">
+        <div class="variable slider">
+            <div class="">
+                <img src="{{ 'assets/images/ph-2.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-1.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-3.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-4.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-5.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-6.png'|theme }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="image">
+        {% if record %}
+        <div class="details-col">
+            <a href="{{ 'home'|page }}">Послуги</a> > {{ record.title }}
+            <br><br>
+            <h1>{{ record.title }}</h1>
+            <br>
+            <div class="product__price">
+                <del>₴{{ record.old_price }}</del>₴{{ record.price }}
+            </div>
+        <br>
+            <div class="text">
+                {{ record.text|raw }}
+            </div>
+        <br>
+            <a class="btn" href="#popup" data-fancybox>
+                Записатись <span class="fas fa-chevron-right"></span>
+            </a> 
+        </div>
+     
+        
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+
+            
+    </div>
+
+</section>
+
+<!-- <section class="details-container">
+    
+    
+    <div class="variable slider">
+            <div class="">
+                <img src="{{ 'assets/images/ph-2.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-1.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-3.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-4.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-5.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-6.png'|theme }}" alt="">
+            </div>
+    </div>
+      <p><img class="img" src="{{ record.image|media }}" alt=""></p> 
+    
+    {% if record %}
+     <div class="details-col">
+        <a href="{{ 'home'|page }}">Послуги</a> > <a>{{ record.title }}</a>
+        <br><br>
+        <h1>{{ record.title }}</h1>
+        <br>
+        <div class="product__price">
+            <del>₴{{ record.old_price }}</del>₴{{ record.price }}
+        </div>
+       <br>
+            <div class="text">
+                {{ record.text|raw }}
+            </div>
+        </div>
+     
+        
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+        </div>
+</section> -->
+    
+    <section class="detail-services" id="detail-services">
+
+        <h1 class="another-header"> Інші  <span>  послуги</span> </h1>
+        
+        <div class="box-container">
+            {% set records = builderList.records %}
+            {% set displayColumn = builderList.displayColumn %}
+            {% set noRecordsMessage = builderList.noRecordsMessage %}
+            {% set detailsPage = builderList.detailsPage %}
+            {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+            {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+                
+                    {% for record in records %}
+            <div class="box">
+                <!-- <i class="fas fa-notes-medical"></i> -->
+                <h3 class="product__title">
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">{{ record.title }}</a>
+                </h3>
+                <div class="another-product__price">
+                    <del> ₴{{ record.old_price }}   </del>₴{{ record.price }}
+                </div>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.</p> -->
+                <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}" class="btn"> Більше.. <span class="fas fa-chevron-right"></span> </a>
+            </div>
+            {% else %}
+            <p>{{ noRecordsMessage }}</p>
+                    {% endfor %}
+        </div>
+        
+    </section>
+
+    {% put scripts %}
+        
+    <script>
+        $(".variable").slick({
+        dots: true,
+        infinite: true,
+        variableWidth: true,
+        // responsive: [
+        //     {
+        //       breakpoint: 768,
+        //       settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         centerPadding: '40px',
+        //         slidesToShow: 2
+        //       }
+        //     },
+        //     {
+        //       breakpoint: 480,
+        //       settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         centerPadding: '40px',
+        //         slidesToShow: 1
+        //       }
+        //     }
+        //   ]
+      });
+    </script>
+
+    {% endput %}";s:5:"mtime";i:1658063165;s:6:"markup";s:6291:"{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+{%put styles%}
+
+<style>
+
+    div.slider{
+        margin: 0;
+        border: var(--border);
+        border-radius: .5rem;
+        width: 45rem;
+    }
+
+    .slick-slide {
+      margin: 0px 10px;
+    }
+
+    .slick-slide img {
+      width: 80%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+    }
+
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+</style>
+
+{%endput%}
+
+
+<section class="details-container" id="home">
+
+    <div class="content">
+        <div class="variable slider">
+            <div class="">
+                <img src="{{ 'assets/images/ph-2.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-1.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-3.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-4.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-5.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-6.png'|theme }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="image">
+        {% if record %}
+        <div class="details-col">
+            <a href="{{ 'home'|page }}">Послуги</a> > {{ record.title }}
+            <br><br>
+            <h1>{{ record.title }}</h1>
+            <br>
+            <div class="product__price">
+                <del>₴{{ record.old_price }}</del>₴{{ record.price }}
+            </div>
+        <br>
+            <div class="text">
+                {{ record.text|raw }}
+            </div>
+        <br>
+            <a class="btn" href="#popup" data-fancybox>
+                Записатись <span class="fas fa-chevron-right"></span>
+            </a> 
+        </div>
+     
+        
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+
+            
+    </div>
+
+</section>
+
+<!-- <section class="details-container">
+    
+    
+    <div class="variable slider">
+            <div class="">
+                <img src="{{ 'assets/images/ph-2.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-1.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-3.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-4.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-5.png'|theme }}" alt="">
+            </div>
+            <div class="">
+                <img src="{{ 'assets/images/ph-6.png'|theme }}" alt="">
+            </div>
+    </div>
+      <p><img class="img" src="{{ record.image|media }}" alt=""></p> 
+    
+    {% if record %}
+     <div class="details-col">
+        <a href="{{ 'home'|page }}">Послуги</a> > <a>{{ record.title }}</a>
+        <br><br>
+        <h1>{{ record.title }}</h1>
+        <br>
+        <div class="product__price">
+            <del>₴{{ record.old_price }}</del>₴{{ record.price }}
+        </div>
+       <br>
+            <div class="text">
+                {{ record.text|raw }}
+            </div>
+        </div>
+     
+        
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+        </div>
+</section> -->
+    
+    <section class="detail-services" id="detail-services">
+
+        <h1 class="another-header"> Інші  <span>  послуги</span> </h1>
+        
+        <div class="box-container">
+            {% set records = builderList.records %}
+            {% set displayColumn = builderList.displayColumn %}
+            {% set noRecordsMessage = builderList.noRecordsMessage %}
+            {% set detailsPage = builderList.detailsPage %}
+            {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+            {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+                
+                    {% for record in records %}
+            <div class="box">
+                <!-- <i class="fas fa-notes-medical"></i> -->
+                <h3 class="product__title">
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">{{ record.title }}</a>
+                </h3>
+                <div class="another-product__price">
+                    <del> ₴{{ record.old_price }}   </del>₴{{ record.price }}
+                </div>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.</p> -->
+                <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}" class="btn"> Більше.. <span class="fas fa-chevron-right"></span> </a>
+            </div>
+            {% else %}
+            <p>{{ noRecordsMessage }}</p>
+                    {% endfor %}
+        </div>
+        
+    </section>
+
+    {% put scripts %}
+        
+    <script>
+        $(".variable").slick({
+        dots: true,
+        infinite: true,
+        variableWidth: true,
+        // responsive: [
+        //     {
+        //       breakpoint: 768,
+        //       settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         centerPadding: '40px',
+        //         slidesToShow: 2
+        //       }
+        //     },
+        //     {
+        //       breakpoint: 480,
+        //       settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         centerPadding: '40px',
+        //         slidesToShow: 1
+        //       }
+        //     }
+        //   ]
+      });
+    </script>
+
+    {% endput %}";s:4:"code";s:860:"use TanyaIvat\Products\Models\Products;
+use TanyaIvat\Products\Models\Order;
+
+use Falsh;
+use Validator;
+
+function onStart() {
+    $this['services'] = Products::all();
+}
+
+function onSendService() {
+    try {
+        $date = post();
+        $order = new Order;
+        
+        $order->name = $date['name'];
+        $order->email = $date['email'];
+        $order->service = $date['service'];
+        $order->date = $date['date'];
+        $order->time = $date['time'];
+        $order->master = $date['master'];
+        $order->save();
+
+        
+        Flash::success('Успішно надіслано!');
+        
+        
+    }
+    catch (Exception $e){
+        Flash::error('Помилка надсилання');
+    }
+}
+
+function onGetService() {
+    $this['service'] = Products::where('slug', post('service'))->first();
+}";s:5:"title";s:7:"Product";s:3:"url";s:14:"/product/:slug";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:14:"builderDetails";a:5:{s:10:"modelClass";s:34:"TanyaIvat\Products\Models\Products";s:15:"identifierValue";s:11:"{{ :slug }}";s:14:"modelKeyColumn";s:4:"slug";s:13:"displayColumn";s:5:"title";s:15:"notFoundMessage";s:36:"Немає такої послуги";}s:11:"builderList";a:9:{s:10:"modelClass";s:34:"TanyaIvat\Products\Models\Products";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:4:"slug";s:16:"noRecordsMessage";s:34:"Немає таких послуг";s:11:"detailsPage";s:7:"product";s:16:"detailsKeyColumn";s:4:"slug";s:19:"detailsUrlParameter";s:4:"slug";s:10:"pageNumber";s:11:"{{ :page }}";}}}

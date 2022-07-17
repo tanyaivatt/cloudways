@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table tanyaivat_products_list'
+    - builder_table_create_tanyaivat_products_list.php
+1.0.3:
+    - 'Updated table tanyaivat_products_list'
+    - builder_table_update_tanyaivat_products_list.php
+1.0.4:
+    - 'Updated table tanyaivat_products_list'
+    - builder_table_update_tanyaivat_products_list_2.php
+1.0.5:
+    - 'Created table tanyaivat_products_orders'
+    - builder_table_create_tanyaivat_products_orders.php
+1.0.6:
+    - 'Updated table tanyaivat_products_orders'
+    - builder_table_update_tanyaivat_products_orders.php

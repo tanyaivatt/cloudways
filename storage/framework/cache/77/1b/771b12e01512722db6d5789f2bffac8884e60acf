@@ -1,0 +1,145 @@
+1658087672a:1:{s:8:"home.htm";a:10:{s:8:"fileName";s:8:"home.htm";s:7:"content";s:2004:"title = "Homepage"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[builderList]
+modelClass = "TanyaIvat\Products\Models\Products"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "slug"
+noRecordsMessage = "Немає таких послуг"
+detailsPage = "product"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+==
+<?php
+use TanyaIvat\Products\Models\Products;
+use TanyaIvat\Products\Models\Order;
+
+use Falsh;
+use Validator;
+
+function onStart() {
+    $this['services'] = Products::all();
+}
+
+function onSendService() {
+    try {
+        $date = post();
+        $order = new Order;
+        
+        $order->name = $date['name'];
+        $order->email = $date['email'];
+        $order->service = $date['service'];
+        $order->date = $date['date'];
+        $order->time = $date['time'];
+        $order->master = $date['master'];
+        $order->save();
+
+        
+        Flash::success('Успішно надіслано!');
+        
+        
+    }
+    catch (Exception $e){
+        Flash::error('Помилка надсилання');
+    }
+}
+
+function onGetService() {
+    $this['service'] = Products::where('slug', post('service'))->first();
+}
+?>
+==
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Зроби своє волосся красивішим<3</h3>
+        <p>У нашому салоні ти зможеш апгрейднути не тільки волосся, але й самооцінку:)</p>
+        <a class="btn" href="#popup" data-fancybox>
+        <b>Записатись</b><span class="fas fa-chevron-right"></span>
+        </a> 
+    </div>
+
+    <div class="image">
+        <img src="{{ 'assets/images/homeimg.svg'|theme }}" alt="">
+    </div>
+
+</section>
+
+
+<!-- Services -->
+{% partial 'services' %}
+
+<!-- Masters -->
+{% partial 'masters' %}
+
+<!-- Reviews -->
+{% partial 'reviews' %}
+
+<!-- Benefits -->
+{% partial 'benefits' %}";s:5:"mtime";i:1658061867;s:6:"markup";s:756:"<section class="home" id="home">
+
+    <div class="content">
+        <h3>Зроби своє волосся красивішим<3</h3>
+        <p>У нашому салоні ти зможеш апгрейднути не тільки волосся, але й самооцінку:)</p>
+        <a class="btn" href="#popup" data-fancybox>
+        <b>Записатись</b><span class="fas fa-chevron-right"></span>
+        </a> 
+    </div>
+
+    <div class="image">
+        <img src="{{ 'assets/images/homeimg.svg'|theme }}" alt="">
+    </div>
+
+</section>
+
+
+<!-- Services -->
+{% partial 'services' %}
+
+<!-- Masters -->
+{% partial 'masters' %}
+
+<!-- Reviews -->
+{% partial 'reviews' %}
+
+<!-- Benefits -->
+{% partial 'benefits' %}";s:4:"code";s:860:"use TanyaIvat\Products\Models\Products;
+use TanyaIvat\Products\Models\Order;
+
+use Falsh;
+use Validator;
+
+function onStart() {
+    $this['services'] = Products::all();
+}
+
+function onSendService() {
+    try {
+        $date = post();
+        $order = new Order;
+        
+        $order->name = $date['name'];
+        $order->email = $date['email'];
+        $order->service = $date['service'];
+        $order->date = $date['date'];
+        $order->time = $date['time'];
+        $order->master = $date['master'];
+        $order->save();
+
+        
+        Flash::success('Успішно надіслано!');
+        
+        
+    }
+    catch (Exception $e){
+        Flash::error('Помилка надсилання');
+    }
+}
+
+function onGetService() {
+    $this['service'] = Products::where('slug', post('service'))->first();
+}";s:5:"title";s:8:"Homepage";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:11:"builderList";a:9:{s:10:"modelClass";s:34:"TanyaIvat\Products\Models\Products";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:4:"slug";s:16:"noRecordsMessage";s:34:"Немає таких послуг";s:11:"detailsPage";s:7:"product";s:16:"detailsKeyColumn";s:4:"slug";s:19:"detailsUrlParameter";s:4:"slug";s:10:"pageNumber";s:11:"{{ :page }}";}}}

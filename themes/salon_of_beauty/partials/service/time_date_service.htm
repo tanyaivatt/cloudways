@@ -1,0 +1,19 @@
+[viewBag]
+==
+<div id="partialTimeDateService" style="margin-top: 10px;">
+    <label for="times"><h3>Дата і час</h3></label>
+    
+    <select id="times" name="time" style="border: .1rem solid rgba(192, 149, 133, 0.2);">
+        
+        {% for times in service.job_date %}
+        
+            <option value="{{ times.time|date('H:i') }}">{{ times.time|date('H:i') }}</option>
+            
+        {% endfor %}
+        
+    </select>
+
+    <input type="date" name="date" style="border: .1rem solid rgba(192, 149, 133, 0.2);" required>
+    
+    
+</div>

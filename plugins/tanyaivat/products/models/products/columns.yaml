@@ -1,0 +1,14 @@
+columns:
+    id:
+        label: '#'
+        type: number
+        searchable: true
+        sortable: true
+    title:
+        label: 'Назва товару'
+        type: text
+        searchable: true
+    price:
+        label: 'Ціна товару'
+        type: text
+        sortable: true

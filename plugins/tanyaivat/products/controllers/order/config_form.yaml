@@ -1,0 +1,10 @@
+name: Order
+form: $/tanyaivat/products/models/order/fields.yaml
+modelClass: TanyaIvat\Products\Models\Order
+defaultRedirect: tanyaivat/products/order
+create:
+    redirect: 'tanyaivat/products/order/update/:id'
+    redirectClose: tanyaivat/products/order
+update:
+    redirect: tanyaivat/products/order
+    redirectClose: tanyaivat/products/order

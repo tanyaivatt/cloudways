@@ -1,0 +1,59 @@
+1658087672a:1:{s:12:"services.htm";a:5:{s:8:"fileName";s:12:"services.htm";s:7:"content";s:1426:"<section class="services" id="services">
+
+    <h1 class="heading"> наші <span>послуги</span> </h1>
+    
+    <div class="box-container">
+        {% set records = builderList.records %}
+        {% set displayColumn = builderList.displayColumn %}
+        {% set noRecordsMessage = builderList.noRecordsMessage %}
+        {% set detailsPage = builderList.detailsPage %}
+        {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+        {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+            
+                {% for record in records %}
+        <div class="box">
+            <!-- <i class="fas fa-notes-medical"></i> -->
+            <h3 class="product__title">
+                <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">{{ record.title }}</a>
+            </h3>
+            <div class="product__price">
+                <del> ₴{{ record.old_price }}   </del>₴{{ record.price }}
+            </div>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.</p> -->
+            <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}" class="btn"> Більше.. <span class="fas fa-chevron-right"></span> </a>
+        </div>
+        {% else %}
+        <p>{{ noRecordsMessage }}</p>
+                {% endfor %}
+    </div>
+    
+</section>";s:5:"mtime";i:1658004264;s:6:"markup";s:1426:"<section class="services" id="services">
+
+    <h1 class="heading"> наші <span>послуги</span> </h1>
+    
+    <div class="box-container">
+        {% set records = builderList.records %}
+        {% set displayColumn = builderList.displayColumn %}
+        {% set noRecordsMessage = builderList.noRecordsMessage %}
+        {% set detailsPage = builderList.detailsPage %}
+        {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+        {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+            
+                {% for record in records %}
+        <div class="box">
+            <!-- <i class="fas fa-notes-medical"></i> -->
+            <h3 class="product__title">
+                <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">{{ record.title }}</a>
+            </h3>
+            <div class="product__price">
+                <del> ₴{{ record.old_price }}   </del>₴{{ record.price }}
+            </div>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.</p> -->
+            <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}" class="btn"> Більше.. <span class="fas fa-chevron-right"></span> </a>
+        </div>
+        {% else %}
+        <p>{{ noRecordsMessage }}</p>
+                {% endfor %}
+    </div>
+    
+</section>";s:4:"code";N;}}

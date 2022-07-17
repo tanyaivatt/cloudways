@@ -1,0 +1,29 @@
+columns:
+    service:
+        label: service
+        type: text
+    date:
+        label: date
+        type: text
+    time:
+        label: time
+        type: text
+    status:
+        label: status
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+        sortable: true
+    updated_at:
+        label: updated_at
+        type: datetime
+    name:
+        label: name
+        type: text
+    email:
+        label: email
+        type: text
+    master:
+        label: master
+        type: text

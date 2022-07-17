@@ -1,0 +1,12 @@
+list: $/tanyaivat/products/models/products/columns.yaml
+modelClass: TanyaIvat\Products\Models\Products
+title: Products
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'tanyaivat/products/products/update/:id'

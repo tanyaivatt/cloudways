@@ -1,0 +1,35 @@
+1658069727a:1:{s:29:"service/time_date_service.htm";a:6:{s:8:"fileName";s:29:"service/time_date_service.htm";s:7:"content";s:575:"[viewBag]
+==
+<div id="partialTimeDateService" style="margin-top: 10px;">
+    <label for="times"><h3>Дата і час</h3></label>
+    
+    <select id="times" name="time" style="border: .1rem solid rgba(192, 149, 133, 0.2);">
+        
+        {% for times in service.job_date %}
+        
+            <option value="{{ times.time|date('H:i') }}">{{ times.time|date('H:i') }}</option>
+            
+        {% endfor %}
+        
+    </select>
+
+    <input type="date" name="date" style="border: .1rem solid rgba(192, 149, 133, 0.2);" required>
+    
+    
+</div>";s:5:"mtime";i:1658064469;s:6:"markup";s:560:"<div id="partialTimeDateService" style="margin-top: 10px;">
+    <label for="times"><h3>Дата і час</h3></label>
+    
+    <select id="times" name="time" style="border: .1rem solid rgba(192, 149, 133, 0.2);">
+        
+        {% for times in service.job_date %}
+        
+            <option value="{{ times.time|date('H:i') }}">{{ times.time|date('H:i') }}</option>
+            
+        {% endfor %}
+        
+    </select>
+
+    <input type="date" name="date" style="border: .1rem solid rgba(192, 149, 133, 0.2);" required>
+    
+    
+</div>";s:4:"code";N;s:7:"viewBag";a:0:{}}}

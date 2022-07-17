@@ -1,0 +1,17 @@
+plugin:
+    name: 'tanyaivat.products::lang.plugin.name'
+    description: 'tanyaivat.products::lang.plugin.description'
+    author: tanyaivatt
+    icon: oc-icon-cut
+    homepage: ''
+navigation:
+    products:
+        label: Товари
+        url: tanyaivat/products/products
+        icon: icon-cut
+        permissions: {  }
+        sideMenu:
+            side-menu-orders:
+                label: Orders
+                url: tanyaivat/products/order
+                icon: icon-sitemap

@@ -1,0 +1,177 @@
+1658087672a:1:{s:9:"modal.htm";a:6:{s:8:"fileName";s:9:"modal.htm";s:7:"content";s:3643:"[viewBag]
+==
+<!-- background: url("../images/home_img.png") -->
+<div id="popup" style="display: none; border-radius: 5px; border: var(--border); font-family: 'Montserrat', sans-serif;" >
+
+    <form name="formModealSecvice"
+        id="formModealSecvice"
+        data-request="onSendService"
+        data-request-validate
+        data-request-flash
+        data-request-success="modalReserForm()"
+        >
+        
+            <center>
+                <img class="img" src="{{ 'assets/images/giphy2.gif'|theme }}" alt="" style="width: 20rem;">
+            </center>
+        
+            
+            <label for="name"><h3>Ваше ім'я</h3></label>
+            <input type="text" id="name" name="name" value="" style="margin-bottom: 10px; width:300px; border: .1rem solid rgba(192, 149, 133, 0.2);" 
+            required><br>
+            
+           
+            <label for="name"><h3>Email</h3></label>
+            <input type="email" id="email" name="email" value="" style="margin-bottom: 10px; width:300px; border: .1rem solid rgba(192, 149, 133, 0.2);"
+            required><br>
+            <span data-validate-for="email"></span>
+            
+        
+       <div class="">
+            
+            <label for="services"><h3>Послугa</h3></label>
+            
+            <select id="services" name="service"
+                data-request="onGetService" 
+                data-request-update="'service/time_date_service': '#time_date_service'"
+                data-track-input
+                style="width: 300px; height: 20px; border: .1rem solid rgba(192, 149, 133, 0.2);">
+                
+                <option value="null">Оберіть послугу</option>  
+
+                {% for service in services %}
+                
+                <option value="{{ service.slug }}">{{ service.title }}</option>
+                    
+                {% endfor %} 
+            </select>
+           
+        </div>
+            
+        
+            
+        <div id="time_date_service"></div>
+        
+       
+        <div id="master" style="margin-top: 10px;">
+        
+            <label for="master"><h3>Майстер</h3></label>
+                
+            <select id="master" name="master" style="width: 300px; height: 20px; border: .1rem solid rgba(192, 149, 133, 0.2);">
+                    
+                  <option value="null">Оберіть майстра</option>
+                  <option value="Оля">Оля</option>
+                  <option value="Іра">Іра</option>
+                  <option value="Олена">Олена (власниця)</option>
+            
+            </select>
+        
+        </div>    
+        
+    </form>
+    
+    <div class="navigations" style="margin-top: 20px">
+        <button style="border:none; border-radius: 5px; margin:10px; padding:10px; background: #DCDCDC; width:120px; cursor: pointer;" id="close_modal_form" data-fancybox-close class="button" title="close"><h4>Відмінити</h4></button>
+        
+        <button style="border:none; border-radius: 5px; margin:10px; padding:10px; background: #50E97B; box-shadow: 0 6px 8px 0 rgba(119, 253, 157, 0.5), 0 17px 50px 0 rgba(0,0,0,0.19); color:white; width:120px; cursor: pointer;" form="formModealSecvice" class="button" title="send"><h4>Забронювати</h4></button>
+    </div>
+</div>
+
+{% put scripts %}
+
+<script>
+    function modalReserForm() {
+        $('#formModealSecvice').trigger("reset");
+        $('#partialTimeDateService').remove();
+        $('#close_modal_form').click();
+    }
+</script>
+
+{% endput %}";s:5:"mtime";i:1658069340;s:6:"markup";s:3628:"<!-- background: url("../images/home_img.png") -->
+<div id="popup" style="display: none; border-radius: 5px; border: var(--border); font-family: 'Montserrat', sans-serif;" >
+
+    <form name="formModealSecvice"
+        id="formModealSecvice"
+        data-request="onSendService"
+        data-request-validate
+        data-request-flash
+        data-request-success="modalReserForm()"
+        >
+        
+            <center>
+                <img class="img" src="{{ 'assets/images/giphy2.gif'|theme }}" alt="" style="width: 20rem;">
+            </center>
+        
+            
+            <label for="name"><h3>Ваше ім'я</h3></label>
+            <input type="text" id="name" name="name" value="" style="margin-bottom: 10px; width:300px; border: .1rem solid rgba(192, 149, 133, 0.2);" 
+            required><br>
+            
+           
+            <label for="name"><h3>Email</h3></label>
+            <input type="email" id="email" name="email" value="" style="margin-bottom: 10px; width:300px; border: .1rem solid rgba(192, 149, 133, 0.2);"
+            required><br>
+            <span data-validate-for="email"></span>
+            
+        
+       <div class="">
+            
+            <label for="services"><h3>Послугa</h3></label>
+            
+            <select id="services" name="service"
+                data-request="onGetService" 
+                data-request-update="'service/time_date_service': '#time_date_service'"
+                data-track-input
+                style="width: 300px; height: 20px; border: .1rem solid rgba(192, 149, 133, 0.2);">
+                
+                <option value="null">Оберіть послугу</option>  
+
+                {% for service in services %}
+                
+                <option value="{{ service.slug }}">{{ service.title }}</option>
+                    
+                {% endfor %} 
+            </select>
+           
+        </div>
+            
+        
+            
+        <div id="time_date_service"></div>
+        
+       
+        <div id="master" style="margin-top: 10px;">
+        
+            <label for="master"><h3>Майстер</h3></label>
+                
+            <select id="master" name="master" style="width: 300px; height: 20px; border: .1rem solid rgba(192, 149, 133, 0.2);">
+                    
+                  <option value="null">Оберіть майстра</option>
+                  <option value="Оля">Оля</option>
+                  <option value="Іра">Іра</option>
+                  <option value="Олена">Олена (власниця)</option>
+            
+            </select>
+        
+        </div>    
+        
+    </form>
+    
+    <div class="navigations" style="margin-top: 20px">
+        <button style="border:none; border-radius: 5px; margin:10px; padding:10px; background: #DCDCDC; width:120px; cursor: pointer;" id="close_modal_form" data-fancybox-close class="button" title="close"><h4>Відмінити</h4></button>
+        
+        <button style="border:none; border-radius: 5px; margin:10px; padding:10px; background: #50E97B; box-shadow: 0 6px 8px 0 rgba(119, 253, 157, 0.5), 0 17px 50px 0 rgba(0,0,0,0.19); color:white; width:120px; cursor: pointer;" form="formModealSecvice" class="button" title="send"><h4>Забронювати</h4></button>
+    </div>
+</div>
+
+{% put scripts %}
+
+<script>
+    function modalReserForm() {
+        $('#formModealSecvice').trigger("reset");
+        $('#partialTimeDateService').remove();
+        $('#close_modal_form').click();
+    }
+</script>
+
+{% endput %}";s:4:"code";N;s:7:"viewBag";a:0:{}}}

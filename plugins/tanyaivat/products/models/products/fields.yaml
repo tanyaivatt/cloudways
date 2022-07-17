@@ -1,0 +1,56 @@
+fields:
+    title:
+        label: 'Назва товару'
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    price:
+        label: Ціна
+        span: auto
+        type: number
+    old_price:
+        label: 'Ціна без знижки'
+        span: auto
+        type: number
+tabs:
+    fields:
+        text:
+            label: 'Опис товару'
+            size: large
+            span: full
+            type: richeditor
+            tab: Description
+        repeater1:
+            label: 'Фото послуги'
+            prompt: 'Add new item'
+            style: default
+            span: auto
+            type: repeater
+            tab: Galery
+            form:
+                fields:
+                    mediafinder1:
+                        label: 'Media finder'
+                        mode: file
+                        span: auto
+                        type: mediafinder
+        job_date:
+            label: Job
+            prompt: 'Add new item'
+            style: default
+            span: full
+            type: repeater
+            tab: 'Job date'
+            form:
+                fields:
+                    time:
+                        label: 'Date picker'
+                        mode: time
+                        span: auto
+                        type: datepicker

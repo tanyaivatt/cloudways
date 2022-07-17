@@ -1,0 +1,88 @@
+1658087672a:1:{s:10:"footer.htm";a:6:{s:8:"fileName";s:10:"footer.htm";s:7:"content";s:1856:"==
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo">  
+                <img src="{{ 'assets/images/logo.svg'|theme }}" alt="" style="width: 20rem;"> 
+            </a>
+        </div>
+
+
+        <div class="box">
+            <h3>Швидкі лінки</h3>
+            <a href="{{ 'home'|page }}"> <i class="fas fa-chevron-right"></i> Головна </a>
+            <a href="{{ 'home'|page }}#services"> <i class="fas fa-chevron-right"></i> Послуги </a>
+            <a href="{{ 'home'|page }}#masters"> <i class="fas fa-chevron-right"></i> Майстри </a>
+            <a href="{{ 'home'|page }}#review"> <i class="fas fa-chevron-right"></i> Відгуки </a>
+        </div>
+
+
+        <div class="box">
+            <h3>Контакти</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> mailmail@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> emailemail@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Львів, Україна - 79057 </a>
+        </div>
+
+        <div class="box">
+            <h3>Соц. мережі</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>tanyaivatt</span> | all rights reserved </div>
+
+</section>
+";s:5:"mtime";i:1658004374;s:6:"markup";s:1848:"<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo">  
+                <img src="{{ 'assets/images/logo.svg'|theme }}" alt="" style="width: 20rem;"> 
+            </a>
+        </div>
+
+
+        <div class="box">
+            <h3>Швидкі лінки</h3>
+            <a href="{{ 'home'|page }}"> <i class="fas fa-chevron-right"></i> Головна </a>
+            <a href="{{ 'home'|page }}#services"> <i class="fas fa-chevron-right"></i> Послуги </a>
+            <a href="{{ 'home'|page }}#masters"> <i class="fas fa-chevron-right"></i> Майстри </a>
+            <a href="{{ 'home'|page }}#review"> <i class="fas fa-chevron-right"></i> Відгуки </a>
+        </div>
+
+
+        <div class="box">
+            <h3>Контакти</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> mailmail@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> emailemail@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Львів, Україна - 79057 </a>
+        </div>
+
+        <div class="box">
+            <h3>Соц. мережі</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>tanyaivatt</span> | all rights reserved </div>
+
+</section>";s:4:"code";N;s:17:"_PARSER_ERROR_INI";s:0:"";}}

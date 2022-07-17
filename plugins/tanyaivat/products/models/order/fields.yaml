@@ -1,0 +1,31 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    email:
+        label: Email
+        span: auto
+        type: text
+    service:
+        label: Service
+        span: auto
+        type: text
+    date:
+        label: Date
+        mode: date
+        span: auto
+        type: datepicker
+    time:
+        label: Time
+        mode: time
+        span: auto
+        type: datepicker
+    status:
+        label: Status
+        span: auto
+        type: checkbox
+    master:
+        label: Master
+        span: auto
+        type: text
